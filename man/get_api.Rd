@@ -8,16 +8,13 @@ get_api(api = NULL)
 }
 \arguments{
 \item{api}{Default \code{NULL}. Your private api key. If \code{api}
-is \code{NULL}, the environment variable \code{Sys.getenv("typeform_api2")}
+is \code{NULL}, the environment variable \code{Sys.getenv("getrecipes_api")}
 is used.}
 }
 \description{
 Taken from Colin Gillespie's rtypeform package
- 
-If the entry \code{typeform_api2} exists in your
-\code{.Renviron} return that value. Otherwise, raise an error.
 }
 \details{
-In version 1 of the typeform API, rtypeform looked for the key
-\code{typeform_api},
+If the entry \code{"getrecipes_api"} exists in your
+\code{.Renviron} return that value. Otherwise, raise an error.
 }

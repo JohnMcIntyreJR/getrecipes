@@ -26,23 +26,23 @@ shinyServer(function(input, output) {
     if (input$number == 0) {
       ingredients = NULL
     } else if (input$number == 1) {
-      ingredients = input$ingredient1
+      ingredients = input$ingredient1.1
     } else if (input$number == 2) {
-      ingredients = stringr::str_c(input$ingredient1, input$ingredient2,
+      ingredients = stringr::str_c(input$ingredient2.1, input$ingredient2.2,
                                    sep = ",")
       #Line 34 emphasies problem regarding the missing input$ingredient1
       print(ingredients)
     } else if (input$number == 3) {
-      ingredients = stringr::str_c(input$ingredient1, input$ingredient2,
-                                   input$ingredient3, sep = ",")
+      ingredients = stringr::str_c(input$ingredient3.1, input$ingredient3.2,
+                                   input$ingredient3.3, sep = ",")
     } else if (input$number == 4) {
-      ingredients = stringr::str_c(input$ingredient1, input$ingredient2,
-                                   input$ingredient3, input$ingredient4,
+      ingredients = stringr::str_c(input$ingredient4.1, input$ingredient4.2,
+                                   input$ingredient4.3, input$ingredient4.4,
                                    sep = ",")
     } else if (input$number == 5) {
-      ingredients = stringr::str_c(input$ingredient1, input$ingredient2,
-                                   input$ingredient3, input$ingredient4,
-                                   input$ingredient5, sep = ",")
+      ingredients = stringr::str_c(input$ingredient5.1, input$ingredient5.2,
+                                   input$ingredient5.3, input$ingredient5.4,
+                                   input$ingredient5.5, sep = ",")
     }
     #Initialising the url vector and content list respectively
     url = vector("character", pages)
@@ -122,13 +122,15 @@ shinyServer(function(input, output) {
         mutate(Number_of_ingredients = as.integer(map_dbl(Ingredients,
                                                           length))) %>%
         mutate(Ingredients = map_chr(Ingredients, ~paste0(.x,
-                                                          collapse = ", ")))
+                                                          collapse = ", "))) %>%
+        rename("Number of ingredients" = "Number_of_ingredients")
       } else {
         rvs$recipes = rvs$recipes %>%
           mutate(Number_of_ingredients = as.integer(map_dbl(Ingredients,
                                                             length))) %>%
           mutate(Ingredients = map_chr(Ingredients,
-                                       ~paste0(.x, collapse = ", ")))
+                                       ~paste0(.x, collapse = ", "))) %>%
+          rename("Number of ingredients" = "Number_of_ingredients")
         }
     })
   output$table <- DT::renderDataTable({
