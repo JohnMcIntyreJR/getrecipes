@@ -11,8 +11,8 @@ Maintainer: John McIntyre <john@jumpingrivers.com>
 Description: An R interface for parameter entry, that helps you
     find a recipe for a chosen type of food or drink.
 License: GPL-2 | GPL-3
-URL: https://github.com/JohnMcIntyreJR/recipes
-BugReports: https://github.com/JohnMcIntyreJR/recipes/issues
+URL: https://github.com/JohnMcIntyreJR/getrecipes
+BugReports: https://github.com/JohnMcIntyreJR/getrecipes/issues
 Imports:
     dplyr,
     DT,
