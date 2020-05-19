@@ -1,0 +1,7 @@
+linters: with_defaults(
+    assignment_linter = NULL,
+    object_name_linter = NULL,
+    trailing_whitespace_linter = NULL,
+    cyclocomp_linter = NULL,
+    line_length_linter(120)
+  )
