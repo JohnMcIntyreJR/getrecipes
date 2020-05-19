@@ -15,7 +15,7 @@ shinyServer(function(input, output) {
     type = input$type
 
     #User authentication
-    api = get_api()
+    api = getrecipes::get_api()
 
     #Lines 20 + 21 used to try and debug the issue of input$ingredient1
     #dissapearing when more than one ingredient is inputted
@@ -49,26 +49,26 @@ shinyServer(function(input, output) {
     content = list()
 
     #Defining the url of the first page
-    url[1] = get_url(ingredients, type, 1)
+    url[1] = getrecipes::get_url(ingredients, type, 1)
 
     #If statement which checks to see if the corresponding web page exists
     if (RCurl::url.exists(url[1])) {
       #Using the api to parse the JSON text to an R list for the first page
-      content = as.list(get_response(api = api, url[1])[["results"]])
+      content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
 
       #If user wants more than one page we concatenate pages
       if (pages > 1) {
         #For loop used to concatenate the lists (each list corresponds to
         #a page)
         for (i in 2:pages) {
-          url[i] = get_url(ingredients, type, i)
+          url[i] = getrecipes::get_url(ingredients, type, i)
           #If statement which checks to see if the corresponding web page exists
           if (RCurl::url.exists(url[i])) {
             #If statement checking whether a deployed webpage contains recipes
             #in the form of JSON text
-            if (is.data.frame(get_response(api = api, url[i])$results)) {
+            if (is.data.frame(getrecipes::get_response(api = api, url[i])$results)) {
               content = purrr::map2(content,
-                                    as.list(get_response(api = api,
+                                    as.list(getrecipes::get_response(api = api,
                                                          url[i])[["results"]]),
                                     c)
               } else {
@@ -85,15 +85,15 @@ shinyServer(function(input, output) {
         }
       } else {
         #The case when the first page does not exist
-        url[1] = get_url(ingredients, type, 2)
-        content = as.list(get_response(api = api, url[1])[["results"]])
+        url[1] = getrecipes::get_url(ingredients, type, 2)
+        content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
         if (pages > 1) {
           for (i in 2:pages) {
-            url[i] = get_url(ingredients, type, i + 1)
+            url[i] = getrecipes::get_url(ingredients, type, i + 1)
             if (url.exists(url[i])) {
-              if (is.data.frame(get_response(api = api, url[i])$results)) {
+              if (is.data.frame(getrecipes::get_response(api = api, url[i])$results)) {
                 content = purrr::map2(content,
-                                      as.list(get_response(api = api,
+                                      as.list(getrecipes::get_response(api = api,
                                                            url[i])
                                               [["results"]]),
                                       c)
