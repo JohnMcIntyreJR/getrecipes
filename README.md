@@ -1,6 +1,6 @@
 # getrecipes
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Build Status](https://travis-ci.com/JohnMcIntyreJR/recipes.svg?branch=master)](https://travis-ci.com/JohnMcIntyreJR/recipes)
+[![Build Status](https://travis-ci.com/JohnMcIntyreJR/getrecipes.svg?branch=master)](https://travis-ci.com/JohnMcIntyreJR/getrecipes)
 
 ## A package for all food lovers and chef enthusiasts!
 Have you ever been in a situation where you have a bundle of ingredients in your fridge but have no idea what to make? Have you ever considered making a type of food/drink but all you can find are recipes that contain your most hated ingredient? Are you sick of reading through multiple recipes trying to find a type of food that contains the ingredients you like?
