@@ -43,7 +43,6 @@ shinyUI(fluidPage(
                  actionButton("data", "Find recipes!"),
                  ),
     mainPanel(h2("Table providing the name, link and ingredients for each recipe"),
-              DT::dataTableOutput("table"),
-              textOutput("print"))
+              shinycssloaders::withSpinner(DT::dataTableOutput("table")))
   )
 ))
