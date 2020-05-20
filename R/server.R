@@ -17,11 +17,6 @@ shinyServer(function(input, output) {
     #User authentication
     api = getrecipes::get_api()
 
-    #Lines 20 + 21 used to try and debug the issue of input$ingredient1
-    #dissapearing when more than one ingredient is inputted
-    message(input$ingredient1)
-    message(input$ingredient2)
-
     #If statement used to create a string containing all ingredients
     if (input$number == 0) {
       ingredients = NULL
@@ -30,8 +25,6 @@ shinyServer(function(input, output) {
     } else if (input$number == 2) {
       ingredients = stringr::str_c(input$ingredient2.1, input$ingredient2.2,
                                    sep = ",")
-      #Line 34 emphasies problem regarding the missing input$ingredient1
-      print(ingredients)
     } else if (input$number == 3) {
       ingredients = stringr::str_c(input$ingredient3.1, input$ingredient3.2,
                                    input$ingredient3.3, sep = ",")
@@ -73,12 +66,12 @@ shinyServer(function(input, output) {
                                     c)
               } else {
                 #Breaking the for loop if there are no more search results
-                message(glue("There are only {i-1} pages"))
+                message(glue::glue("There are only {i-1} pages"))
                 break
                 }
             } else {
               #Breaking the for loop if there are no more search results
-              message(glue("There are only {i-1} pages"))
+              message(glue::glue("There are only {i-1} pages"))
               break
             }
           }
@@ -98,11 +91,11 @@ shinyServer(function(input, output) {
                                               [["results"]]),
                                       c)
               } else {
-                message(glue("There is only {i-2} pages"))
+                message(glue::glue("There is only {i-2} pages"))
                 break
               }
             } else {
-              message(glue("There is only {i-2} pages"))
+              message(glue::glue("There is only {i-2} pages"))
               break
             }
           }
