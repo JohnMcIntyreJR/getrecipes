@@ -1,9 +1,9 @@
 library("shiny")
 
-textUI = function(id) {
-  ns = NS(id)
-  uiOutput(ns("id"))
-}
+# textUI = function(id) {
+#   ns = NS(id)
+#   uiOutput(ns("id"))
+# }
 
 shinyUI(fluidPage(
   titlePanel("Recipe finder"),

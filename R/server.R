@@ -46,32 +46,15 @@ shinyServer(function(input, output) {
     #User inputs assigned to variables
     pages = input$pages
     type = input$type
-    ingredients = concat_ingredients(input$number, input)
+    ingredients = getrecipes::ingredients_vec(input$number, input)
 
-    observeEvent(input$number, {
-
-    })
-
-    content = get_content(ingredients, type, pages)
-    Ingredients = as.vector(stringr::str_split(content$ingredients, ", "))
-
-    #Creating a tibble to store the data
-    rvs$recipes = tibble::tibble(Name = as.vector(content$title),
-                                 Link = as.vector(content$href),
-                                 Ingredients)
-
-    #If statement deciding if recipes containing all ingredients or at least
-    #one of the chosen ingredients are found
-    if (input$option == "All") {
-      rvs$recipes = rvs$recipes %>%
-        #filter(map_lgl(.x = Ingredients, ~all(ingredients %in% .x))) %>%
-        getrecipes::manipulate_data()
-      } else {
-        rvs$recipes = rvs$recipes %>%
-          getrecipes::manipulate_data()
-        }
+    if(input$option == "All") {
+      rvs$recipes = getrecipes::get_recipe(type, ingredients, pages, TRUE)
+    } else {
+      rvs$recipes == getrecipes::get_recipe(type, ingredients, pages, FALSE)
+      }
     })
   output$table <- DT::renderDataTable({
     rvs$recipes
     })
-})
+  })
