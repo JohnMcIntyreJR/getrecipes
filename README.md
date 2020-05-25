@@ -19,6 +19,8 @@ All this has been made possible with the use of recipebunny's cool API's
 
 `devtools::install_github("JohnMcIntyreJR/getrecipes")`
 
-- Open server.R or ui.R and click "Run App" in the top right corner of the script
+- Opt to deploy on a shiny app or using the get_recipe() function
+
+- If via the shiny app, open server.R or ui.R and click "Run App" in the top right corner of the script
 
 - Answer the questions and cater to your refreshment cravings!

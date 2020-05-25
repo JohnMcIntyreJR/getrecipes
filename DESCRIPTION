@@ -16,15 +16,19 @@ BugReports: https://github.com/JohnMcIntyreJR/getrecipes/issues
 Imports:
     dplyr,
     DT,
+    emo,
+    english,
     glue,
     httr,
     jsonlite,
     purrr,
     RCurl,
+    rlang,
     shiny,
     shinycssloaders,
+    stringi,
     stringr,
     tibble
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
