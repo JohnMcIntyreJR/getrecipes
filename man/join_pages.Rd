@@ -6,6 +6,21 @@
 \usage{
 join_pages(url, content, ingredients, type, pages, first_exist)
 }
+\arguments{
+\item{url}{An initialized vector}
+
+\item{content}{A list containing recipe data}
+
+\item{ingredients}{A string containing ingredients separated by a comma
+but no space}
+
+\item{type}{A character string containing a type of food/drink}
+
+\item{pages}{Number of pages of search results}
+
+\item{first_exist}{Logical element indicating whether the webpage that should
+contain the first page exists}
+}
 \description{
 Joining lists relating to different pages of search results
 }

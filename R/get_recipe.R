@@ -3,6 +3,11 @@
 #' get_recipe() collects recipes that match the filters set by the user. It takes arguments
 #' such as type of food/drink and the desired ingredients.
 #'
+#' @param type The type of food/drink
+#' @param wanted_ingredients A vector of desired ingredients
+#' @param pages The number of pages a user wants
+#' @param filter_all_ing A logical element indicating whether the user wants recipes
+#' containing all ingredients or at least one of the ingredients selected
 #' @export
 get_recipe = function(type, wanted_ingredients, pages, filter_all_ing = TRUE) {
   #User authentication
@@ -50,5 +55,5 @@ get_recipe = function(type, wanted_ingredients, pages, filter_all_ing = TRUE) {
       recipes = recipes %>%
         getrecipes::manipulate_data()
     }
-    DT::datatable(recipes)
+    recipes
   }

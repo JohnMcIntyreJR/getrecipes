@@ -16,13 +16,17 @@ BugReports: https://github.com/JohnMcIntyreJR/getrecipes/issues
 Imports:
     dplyr,
     DT,
+    emo,
+    english,
     glue,
     httr,
     jsonlite,
     purrr,
     RCurl,
+    rlang,
     shiny,
     shinycssloaders,
+    stringi,
     stringr,
     tibble
 Encoding: UTF-8

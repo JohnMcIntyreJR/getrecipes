@@ -1,6 +1,13 @@
 #' Joining lists relating to different pages of search results
 #'
-#'
+#' @param url An initialized vector
+#' @param content A list containing recipe data
+#' @param ingredients A string containing ingredients separated by a comma
+#' but no space
+#' @param type A character string containing a type of food/drink
+#' @param pages Number of pages of search results
+#' @param first_exist Logical element indicating whether the webpage that should
+#' contain the first page exists
 #' @export
 join_pages = function(url, content, ingredients, type, pages, first_exist) {
   api = getrecipes::get_api()
@@ -15,15 +22,12 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
     if (webpage_exists) {
       if (contain_recipes) {
         content = getrecipes::list_join(url[i], content)
-        message = NULL
       } else {
         #Breaking the for loop if there are no more search results
-        message = getrecipes::reached_limit(first_exist, page = i)
         break
       }
     } else {
       #Breaking the for loop if there are no more search results
-      message = getrecipes::reached_limit(first_exist, page = i)
       break
     }
   }

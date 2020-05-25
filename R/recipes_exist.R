@@ -1,5 +1,6 @@
 #' A check for recipe data within a webpage
 #'
+#' @param url The url of a webpage
 #' @export
 recipes_exist = function(url) {
   api = getrecipes::get_api()

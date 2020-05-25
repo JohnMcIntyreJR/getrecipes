@@ -6,6 +6,11 @@
 \usage{
 ingredients_vec(no_of_ingredients, input)
 }
+\arguments{
+\item{no_of_ingredients}{Number of ingredients user selects}
+
+\item{input}{User inputted reactive values}
+}
 \description{
 Creating a vector of ingredients
 }

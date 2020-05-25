@@ -6,6 +6,9 @@
 \usage{
 recipes_exist(url)
 }
+\arguments{
+\item{url}{The url of a webpage}
+}
 \description{
 A check for recipe data within a webpage
 }

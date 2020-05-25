@@ -6,6 +6,11 @@
 \usage{
 list_join(url, content)
 }
+\arguments{
+\item{url}{An initialized vector}
+
+\item{content}{A list containing recipe data}
+}
 \description{
 List concatenation function to join recipe data
 }
