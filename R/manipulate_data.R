@@ -2,7 +2,7 @@
 #'
 #' @param recipe_data A data frame/tibble
 #' @param unwanted_ingredients A vector of unwanted ingredients
-#' @importFrom dplyr %>% mutate rename
+#' @importFrom dplyr %>% mutate rename select
 #' @importFrom rlang .data
 #' @export
 manipulate_data = function(recipe_data, unwanted_ingredients) {
@@ -10,20 +10,22 @@ manipulate_data = function(recipe_data, unwanted_ingredients) {
     recipe_data %>%
       #mutate(Ingredients = map_chr(Ingredients, ~unique(.x))) %>%
       mutate(Link = purrr::map2_chr(.data$Link, .data$Name, ~HTML(paste0("<a href='",.x, "' target='_blank'>",.y,"</a>")))) %>%
+      select(-.data$Name) %>%
       mutate(Number_of_ingredients = as.integer(purrr::map_dbl(.data$Ingredients,
                                                                length))) %>%
       mutate(Ingredients = purrr::map_chr(.data$Ingredients, ~paste0(.x,
                                                                collapse = ", "))) %>%
-      rename("Number of ingredients" = "Number_of_ingredients")
+      rename("Number of ingredients" = "Number_of_ingredients", "Recipe" = "Link")
   } else {
     recipe_data %>%
       #mutate(Ingredients = map_chr(Ingredients, ~unique(.x))) %>%
       mutate(Link = purrr::map2_chr(.data$Link, .data$Name, ~HTML(paste0("<a href='",.x,"'target='_blank'>",.y,"</a>")))) %>%
+      select(-.data$Name) %>%
       mutate(Number_of_ingredients = as.integer(purrr::map_dbl(.data$Ingredients,
                                                                length))) %>%
       mutate(Ingredients = purrr::map_chr(.data$Ingredients, ~paste(.x,
                                                                collapse = ", "))) %>%
       getrecipes::filter_data(unwanted_ingredients, FALSE) %>%
-      rename("Number of ingredients" = "Number_of_ingredients")
+      rename("Number of ingredients" = "Number_of_ingredients", "Recipe" = "Link")
   }
 }
