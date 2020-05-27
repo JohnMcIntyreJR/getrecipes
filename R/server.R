@@ -24,14 +24,14 @@ shinyServer(function(input, output) {
   observeEvent(input$number1, {
     output$wanted_ingredients = renderUI({
       no_of_ingredients = input$number1
-      generate_textboxes(no_of_ingredients, TRUE)
+      getrecipes::generate_textboxes(no_of_ingredients, TRUE)
     })
   })
 
   observeEvent(input$number2, {
     output$unwanted_ingredients = renderUI({
       no_of_unwanted_ingredients = input$number2
-      generate_textboxes(no_of_unwanted_ingredients, FALSE)
+      getrecipes::generate_textboxes(no_of_unwanted_ingredients, FALSE)
     })
   })
 
@@ -62,7 +62,7 @@ shinyServer(function(input, output) {
     # or at least one of the chosen ingredients
 
     if (input$number1 < 2) {
-      rvs$recipes = getrecipes::get_recipe(type, ingredients, NULL, unwanted_ingredients, pages)
+      rvs$recipes = getrecipes::get_recipe(type, ingredients, FALSE, unwanted_ingredients, pages)
     } else {
       if (input$option == "All") {
         rvs$recipes = getrecipes::get_recipe(type, ingredients, TRUE, unwanted_ingredients, pages)
@@ -76,7 +76,7 @@ shinyServer(function(input, output) {
     rvs$page_message = getrecipes::page_count(rvs$recipes, pages)
     })
   output$table = DT::renderDataTable({
-    DT::datatable(rvs$recipes)
+    DT::datatable(rvs$recipes, escape = FALSE)
     })
   output$no_of_pages = renderText({
     rvs$page_message

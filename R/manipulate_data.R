@@ -9,7 +9,7 @@ manipulate_data = function(recipe_data, unwanted_ingredients) {
   if (is.null(unwanted_ingredients)) {
     recipe_data %>%
       #mutate(Ingredients = map_chr(Ingredients, ~unique(.x))) %>%
-      #mutate(Link = purrr::map_chr(Link, ~HTML(paste0("<a href=",.x,">",.x,"</a>")))) %>%
+      mutate(Link = purrr::map2_chr(.data$Link, .data$Name, ~HTML(paste0("<a href='",.x, "' target='_blank'>",.y,"</a>")))) %>%
       mutate(Number_of_ingredients = as.integer(purrr::map_dbl(.data$Ingredients,
                                                                length))) %>%
       mutate(Ingredients = purrr::map_chr(.data$Ingredients, ~paste0(.x,
@@ -18,7 +18,7 @@ manipulate_data = function(recipe_data, unwanted_ingredients) {
   } else {
     recipe_data %>%
       #mutate(Ingredients = map_chr(Ingredients, ~unique(.x))) %>%
-      #mutate(Link = purrr::map_chr(Link, ~HTML(paste0("<a href=",.x,">",.x,"</a>")))) %>%
+      mutate(Link = purrr::map2_chr(.data$Link, .data$Name, ~HTML(paste0("<a href='",.x,"'target='_blank'>",.y,"</a>")))) %>%
       mutate(Number_of_ingredients = as.integer(purrr::map_dbl(.data$Ingredients,
                                                                length))) %>%
       mutate(Ingredients = purrr::map_chr(.data$Ingredients, ~paste(.x,
