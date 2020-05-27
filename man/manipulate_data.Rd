@@ -4,10 +4,12 @@
 \alias{manipulate_data}
 \title{Further data manipulation on the recipes data}
 \usage{
-manipulate_data(recipe_data)
+manipulate_data(recipe_data, unwanted_ingredients)
 }
 \arguments{
 \item{recipe_data}{A data frame/tibble}
+
+\item{unwanted_ingredients}{A vector of unwanted ingredients}
 }
 \description{
 Further data manipulation on the recipes data

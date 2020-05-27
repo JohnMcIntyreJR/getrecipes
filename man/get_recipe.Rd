@@ -4,17 +4,25 @@
 \alias{get_recipe}
 \title{Collating recipes based on user parameter entry}
 \usage{
-get_recipe(type, wanted_ingredients, pages, filter_all_ing = TRUE)
+get_recipe(
+  type,
+  wanted_ingredients,
+  filter_all_ing = TRUE,
+  unwanted_ingredients,
+  pages
+)
 }
 \arguments{
 \item{type}{The type of food/drink}
 
 \item{wanted_ingredients}{A vector of desired ingredients}
 
-\item{pages}{The number of pages a user wants}
-
 \item{filter_all_ing}{A logical element indicating whether the user wants recipes
 containing all ingredients or at least one of the ingredients selected}
+
+\item{unwanted_ingredients}{A vector of unwanted ingredients}
+
+\item{pages}{The number of pages a user wants}
 }
 \description{
 get_recipe() collects recipes that match the filters set by the user. It takes arguments

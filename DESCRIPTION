@@ -1,7 +1,7 @@
 Type: Package
 Package: getrecipes
 Title: Collating recipes based on ingredient preference
-Version: 0.0.3
+Version: 0.0.4
 Authors@R:
     person(given = "John",
            family = "McIntyre",

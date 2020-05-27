@@ -31,7 +31,8 @@ get_content = function(ingredients, type, pages) {
       url[1] = getrecipes::get_url(ingredients, type, 2)
       content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
       if (pages > 1) {
-        content = getrecipes::join_pages(api, content, ingredients, type, pages, first_exist = FALSE)
+        content = getrecipes::join_pages(api, content, ingredients, type,
+                                         pages, first_exist = FALSE)
       }
     }
   content

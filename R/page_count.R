@@ -4,12 +4,12 @@
 #' @param pages_wanted Desired number of pages of search results
 #' @export
 page_count = function(data, pages_wanted) {
-  if(pages_wanted == 1) {
+  if (pages_wanted == 1) {
     "One page of search results!"
   }
-  pages_returned = ceiling(nrow(data)/10)
+  pages_returned = ceiling(nrow(data) / 10)
   logical = pages_returned < pages_wanted
-  if(logical) {
+  if (logical) {
     pages_returned = english::as.english(pages_returned)
     glue::glue("There are only {pages_returned} pages that match
                  your search criteria")
