@@ -4,12 +4,15 @@
 \alias{ingredients_vec}
 \title{Creating a vector of ingredients}
 \usage{
-ingredients_vec(no_of_ingredients, input)
+ingredients_vec(no_of_ingredients, input, wanted)
 }
 \arguments{
 \item{no_of_ingredients}{Number of ingredients user selects}
 
 \item{input}{User inputted reactive values}
+
+\item{wanted}{Logical element dependent on whether the vectot of ingredients
+are wanted or unwanted ingredients}
 }
 \description{
 Creating a vector of ingredients

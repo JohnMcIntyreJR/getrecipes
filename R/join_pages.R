@@ -10,8 +10,6 @@
 #' contain the first page exists
 #' @export
 join_pages = function(url, content, ingredients, type, pages, first_exist) {
-  api = getrecipes::get_api()
-
   for (i in 2:pages) {
     url[i] = getrecipes::get_url(ingredients, type, i)
 

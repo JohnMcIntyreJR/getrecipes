@@ -4,10 +4,13 @@
 \alias{generate_textboxes}
 \title{Generating shiny textboxes}
 \usage{
-generate_textboxes(no_of_ingredients)
+generate_textboxes(no_of_ingredients, wanted)
 }
 \arguments{
 \item{no_of_ingredients}{Number of ingredients selected by the user}
+
+\item{wanted}{Logical element dependent on whether the vectot of ingredients
+are wanted or unwanted ingredients}
 }
 \description{
 The idea behind this function is to dynamically create a certain amount
