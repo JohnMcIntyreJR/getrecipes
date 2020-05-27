@@ -29,6 +29,7 @@ Imports:
     stringi,
     stringr,
     tibble
+Remotes: hadley/emo
 Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 7.1.0
