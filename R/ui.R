@@ -24,7 +24,7 @@ shinyUI(fluidPage(
                              your search by?:", value = 0, min = 0, max = 10),
                  uiOutput("unwanted_ingredients"),
                  sliderInput("pages", glue::glue("Number of pages {page_emoji}:"),
-                             value = 1, min = 1, max = 50),
+                             value = 1, min = 1, max = 10),
                  actionButton("data", "Find recipes!"),
                  ),
     mainPanel(h2("Table providing the name, link and ingredients for each recipe"),

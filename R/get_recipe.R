@@ -25,7 +25,7 @@ get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
   content = list()
 
   #Check to see if the first webpage exists
-  url[1] = get_url(ingredients, type, 1)
+  url[1] = get_url(ingredients, type, 1, TRUE)
   webpage_exists = RCurl::url.exists(url[1])
 
   #if statement to check if first webpage exists then a conditional step
