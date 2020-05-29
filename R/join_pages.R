@@ -13,6 +13,7 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
   for (i in 2:pages) {
     url[i] = getrecipes::get_url(ingredients, type, i, first_exist)
 
+    #Changing p=i to p=i+1 if response obtained already in case where p=i
     if (url[i] == url[i-1]) {
       url[i] = getrecipes::get_url(ingredients, type, i + 1, first_exist)
     }
