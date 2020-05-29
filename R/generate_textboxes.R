@@ -16,9 +16,11 @@ generate_textboxes = function(no_of_ingredients, wanted) {
       } else {
         input_id = paste0("unwanted_ingredient", i)
       }
+      shinyjs::hidden(
       shiny::textInput(inputId = input_id,
                        label = paste0("Ingredient ",
                                       i))
+      )
     })
   }
 }
