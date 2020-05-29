@@ -4,6 +4,8 @@
 #' rtypeform package
 #' @param resp A response
 #' @param content The content
+#' @importFrom httr status_code
+#' @importFrom glue glue
 #' @export
 check_api_response = function(resp, content) {
   status_code = httr::status_code(resp)

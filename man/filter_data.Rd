@@ -2,7 +2,8 @@
 % Please edit documentation in R/filter_data.R
 \name{filter_data}
 \alias{filter_data}
-\title{Filter out search results that contain unwanted ingredients}
+\title{Filter out search results that contain either wanted or unwanted
+ingredients}
 \usage{
 filter_data(data, ingredients, wanted)
 }
@@ -15,5 +16,6 @@ filter_data(data, ingredients, wanted)
 are wanted or unwanted ingredients}
 }
 \description{
-Filter out search results that contain unwanted ingredients
+Filter out search results that contain either wanted or unwanted
+ingredients
 }

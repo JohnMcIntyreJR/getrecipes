@@ -8,6 +8,7 @@
 #' @param pages Number of pages of search results
 #' @param first_exist Logical element indicating whether the webpage that should
 #' contain the first page exists
+#' @importFrom RCurl url.exists
 #' @export
 join_pages = function(url, content, ingredients, type, pages, first_exist) {
   for (i in 2:pages) {
@@ -55,6 +56,5 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
         }
       }
     }
-  print(url)
   content
 }

@@ -2,6 +2,7 @@
 #'
 #' @param url An initialized vector
 #' @param content A list containing recipe data
+#' @importFrom purrr map2
 #' @export
 list_join = function(url, content) {
   api = getrecipes::get_api()

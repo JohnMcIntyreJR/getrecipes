@@ -7,6 +7,8 @@
 #' @param no_of_ingredients Number of ingredients selected by the user
 #' @param wanted Logical element dependent on whether the vectot of ingredients
 #' are wanted or unwanted ingredients
+#' @importFrom shinyjs hidden
+#' @importFrom shiny textInput
 #' @export
 generate_textboxes = function(no_of_ingredients, wanted) {
   if (no_of_ingredients > 0) {

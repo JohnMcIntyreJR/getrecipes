@@ -6,6 +6,7 @@
 #' @param page The chosen page of search results
 #' @param first_exist Logical element determining if the first page exists - i.e.
 #' if a server response is successful if p=1 is in the url
+#' @importFrom glue glue
 #' @export
 get_url = function(ingredients, type, page, first_exist) {
   if(first_exist) {
