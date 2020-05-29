@@ -9,9 +9,6 @@ get_response = function(api, url) {
   ua = httr::user_agent("https://github.com/JohnMcIntyreJR/getrecipes")
 
   resp = httr::GET(url, authorization, ua)
-  # if(status_code(resp) != 200) {
-  #   resp = RETRY("GET", url, times = 5)
-  # }
   cont = httr::content(resp, "text", encoding = "UTF-8")
   content = jsonlite::fromJSON(cont)
 

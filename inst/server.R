@@ -1,7 +1,7 @@
 library("shiny")
 library("dplyr")
 library("purrr")
-
+library("shinyjs")
 
 
 # text = function(input, output, session) {
@@ -9,6 +9,8 @@ library("purrr")
 #     textInput("ingredient", "Enter ingredient:", value = "")
 #   })
 # }
+
+
 
 shinyServer(function(input, output) {
 
@@ -21,11 +23,23 @@ shinyServer(function(input, output) {
   #   }
   # })
 
+  output$wanted_ingredients = renderUI({
+    getrecipes::generate_textboxes(10, TRUE)
+  })
+
   observeEvent(input$number1, {
-    output$wanted_ingredients = renderUI({
-      no_of_ingredients = input$number1
-      getrecipes::generate_textboxes(no_of_ingredients, TRUE)
-    })
+
+
+    ingredient_ids = paste0("wanted_ingredient", 1:10)
+    selected_ingredient_ids = paste0("wanted_ingredient", 1:input$number1)
+    unselected_ingredient_ids = paste0("wanted_ingredient", (input$number1 + 1):10)
+
+    if (input$number1 == 0) {
+      map(ingredient_ids, shinyjs::hide)
+    } else{
+      map(selected_ingredient_ids, shinyjs::show)
+      map(unselected_ingredient_ids, shinyjs::hide)
+    }
   })
 
   observeEvent(input$number2, {

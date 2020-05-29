@@ -9,6 +9,7 @@ pizza_emoji = emo::ji("pizza")
 page_emoji = emo::ji("page")
 
 shinyUI(fluidPage(
+  useShinyjs(),
   titlePanel("Recipe finder"),
   sidebarLayout(
     sidebarPanel(h2("Answer the following questions to gain access to an abundance of
