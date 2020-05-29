@@ -1,4 +1,5 @@
-#' Filter out search results that contain unwanted ingredients
+#' Filter out search results that contain either wanted or unwanted
+#' ingredients
 #'
 #' @param data Data frame/tibble
 #' @param ingredients A vector of ingredients

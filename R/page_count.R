@@ -2,6 +2,9 @@
 #'
 #' @param data A data frame/tibble
 #' @param pages_wanted Desired number of pages of search results
+#' @importFrom glue glue
+#' @importFrom english as.english
+#' @importFrom stringr str_to_title
 #' @export
 page_count = function(data, pages_wanted) {
   if (pages_wanted == 1) {

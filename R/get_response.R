@@ -3,6 +3,8 @@
 #' Taken from rtypeform package created by Colin Gillespie
 #' @param api An application programming interface key to authenticate a user to an API
 #' @param url The url of the webpage
+#' @importFrom httr user_agent GET content
+#' @importFrom jsonlite fromJSON
 #' @export
 get_response = function(api, url) {
   authorization = get_authorization(api)

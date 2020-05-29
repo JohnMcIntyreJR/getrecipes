@@ -17,36 +17,20 @@ shinyServer(function(input, output) {
   #Defining the reactive values
   rvs = reactiveValues(recipes = NULL, page_message = NULL)
 
-  # observeEvent(input$number, {
-  #   for(i in 1:input$number) {
-  #   callModule(text, "id")
-  #   }
-  # })
-
   output$wanted_ingredients = renderUI({
     getrecipes::generate_textboxes(10, TRUE)
   })
 
   observeEvent(input$number1, {
+    getrecipes::show_ui(input$number1, TRUE)
+  })
 
-
-    ingredient_ids = paste0("wanted_ingredient", 1:10)
-    selected_ingredient_ids = paste0("wanted_ingredient", 1:input$number1)
-    unselected_ingredient_ids = paste0("wanted_ingredient", (input$number1 + 1):10)
-
-    if (input$number1 == 0) {
-      map(ingredient_ids, shinyjs::hide)
-    } else{
-      map(selected_ingredient_ids, shinyjs::show)
-      map(unselected_ingredient_ids, shinyjs::hide)
-    }
+  output$unwanted_ingredients = renderUI({
+    getrecipes::generate_textboxes(10, FALSE)
   })
 
   observeEvent(input$number2, {
-    output$unwanted_ingredients = renderUI({
-      no_of_unwanted_ingredients = input$number2
-      getrecipes::generate_textboxes(no_of_unwanted_ingredients, FALSE)
-    })
+    getrecipes::show_ui(input$number2, FALSE)
   })
 
   observeEvent(input$number1, {

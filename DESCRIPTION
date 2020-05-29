@@ -27,7 +27,6 @@ Imports:
     shiny,
     shinycssloaders,
     shinyjs,
-    stringi,
     stringr,
     tibble
 Remotes: hadley/emo

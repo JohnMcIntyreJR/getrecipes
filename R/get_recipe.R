@@ -9,6 +9,8 @@
 #' containing all ingredients or at least one of the ingredients selected
 #' @param unwanted_ingredients A vector of unwanted ingredients
 #' @param pages The number of pages a user wants
+#' @importFrom RCurl url.exists
+#' @importFrom tibble tibble
 #' @export
 get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
                       unwanted_ingredients, pages) {
@@ -17,7 +19,7 @@ get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
 
   #Concatenating the vector of ingredients to a single string - each ingredient
   #separated by a comma and no space
-  ingredients = stringi::stri_paste(wanted_ingredients, collapse = ",")
+  ingredients = paste(wanted_ingredients, collapse = ",")
 
 
   #Initialising the url vector and content list respectively
@@ -25,7 +27,7 @@ get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
   content = list()
 
   #Check to see if the first webpage exists
-  url[1] = get_url(ingredients, type, 1, TRUE)
+  url[1] = getrecipes::get_url(ingredients, type, 1, TRUE)
   webpage_exists = RCurl::url.exists(url[1])
 
   #if statement to check if first webpage exists then a conditional step

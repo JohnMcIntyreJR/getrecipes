@@ -4,6 +4,7 @@
 #' @param input User inputted reactive values
 #' @param wanted Logical element dependent on whether the vectot of ingredients
 #' are wanted or unwanted ingredients
+#' @importFrom shiny reactiveValuesToList
 #' @export
 ingredients_vec = function(no_of_ingredients, input, wanted) {
   if (no_of_ingredients == 0) {
