@@ -35,11 +35,9 @@ shinyServer(function(input, output) {
 
   observeEvent(input$number1, {
     if (input$number1 >= 2) {
-      output$option = renderUI({
-      selectInput("option", "Do you wish to collect recipes that contain
-                all of the chosen ingredients or at least one?:",
-                choices = c("All", "At least one"))
-        })
+      shinyjs::show("option")
+    } else {
+      shinyjs::hide("option")
       }
     })
 

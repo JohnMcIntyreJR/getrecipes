@@ -1,7 +1,7 @@
 Type: Package
 Package: getrecipes
 Title: Collating recipes based on ingredient preference
-Version: 0.0.5
+Version: 0.0.6
 Authors@R:
     person(given = "John",
            family = "McIntyre",
@@ -27,6 +27,7 @@ Imports:
     shiny,
     shinycssloaders,
     shinyjs,
+    shinythemes,
     stringr,
     tibble
 Remotes: hadley/emo
