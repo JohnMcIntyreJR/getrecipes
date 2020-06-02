@@ -11,12 +11,13 @@
 #' @importFrom RCurl url.exists
 #' @export
 join_pages = function(url, content, ingredients, type, pages, first_exist) {
+  pages_skipped = 0
   for (i in 2:pages) {
     url[i] = getrecipes::get_url(ingredients, type, i, first_exist)
 
     #Changing p=i to p=i+1 if response obtained already in case where p=i
     if (url[i] == url[i-1]) {
-      url[i] = getrecipes::get_url(ingredients, type, i + 1, first_exist)
+      url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped, first_exist)
     }
 
     #If statement which checks to see if the corresponding web page exists then
@@ -27,7 +28,8 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
       if (contain_recipes) {
         content = getrecipes::list_join(url[i], content)
       } else {
-        url[i] = getrecipes::get_url(ingredients, type, i + 1, first_exist)
+        pages_skipped = pages_skipped + 1
+        url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped, first_exist)
         if (webpage_exists) {
           contain_recipes = getrecipes::recipes_exist(url[i])
           if (contain_recipes) {
@@ -39,7 +41,8 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
         }
       }
     } else {
-      url[i] = getrecipes::get_url(ingredients, type, i + 1, first_exist)
+      pages_skipped = pages_skipped + 1
+      url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped, first_exist)
       webpage_exists = RCurl::url.exists(url[i])
       if (webpage_exists) {
         contain_recipes = getrecipes::recipes_exist(url[i])
