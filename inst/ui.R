@@ -49,7 +49,7 @@ shinyUI(fluidPage(
     mainPanel(h2("Table providing the name, link and ingredients for each recipe"),
               h3(textOutput("no_of_pages")),
               shinycssloaders::withSpinner(DT::dataTableOutput("table")))
-              #img(src = "burger.png", height = 25, width = 25))
+              #img(src = "screenshot.png", height = "25px", width = "25px"))
               )
     ))
 
