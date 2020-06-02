@@ -14,8 +14,13 @@ page_count = function(data, pages_wanted) {
   logical = pages_returned < pages_wanted
   if (logical) {
     pages_returned = english::as.english(pages_returned)
-    glue::glue("There are only {pages_returned} pages that match
+    if(pages_returned == 1) {
+      glue::glue("There is only 1 page that matches
                  your search criteria")
+      } else {
+      glue::glue("There are only {pages_returned} pages that match
+                 your search criteria")
+        }
     } else {
       pages_wanted = stringr::str_to_title(english::as.english(pages_wanted))
       glue::glue("{pages_wanted} pages of search results!")
