@@ -44,13 +44,12 @@ shinyUI(fluidPage(
                  uiOutput("unwanted_ingredients"),
                  sliderInput("pages", glue::glue("Number of pages {page_emoji}:"),
                              value = 1, min = 1, max = 10),
-                 actionButton("data", "Find recipes!")
+                 actionButton("data", "Find recipes!"),
+                 img(src = "burger.png", height = "100px", width = "100px")
                  ),
     mainPanel(h2("Table providing the name, link and ingredients for each recipe"),
               h3(textOutput("no_of_pages")),
               shinycssloaders::withSpinner(DT::dataTableOutput("table")))
-              #img(src = "screenshot.png", height = "25px", width = "25px"))
-              )
-    ))
+    )))
 
 #https://eu.jsonline.com/story/communities/southwest/news/greenfield/2017/09/19/gourmet-burger-restaurant-conceptual-layout-former-budget-cinemas-greenfield/681018001/
