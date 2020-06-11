@@ -66,13 +66,19 @@ shinyServer(function(input, output) {
           rvs$recipes = getrecipes::get_recipe(type, ingredients, FALSE, unwanted_ingredients,
                                                pages)
         }
-      }
+    }
 
     #Creating a page count message
-    rvs$page_message = getrecipes::page_count(rvs$recipes, pages)
+    if(is.list(rvs$recipes)) {
+      rvs$page_message = "There are no pages that match your search criteria"
+    } else {
+      rvs$page_message = getrecipes::page_count(rvs$recipes, pages)
+    }
     })
   output$table = DT::renderDataTable({
-    DT::datatable(rvs$recipes, escape = FALSE)
+    if(is.list(rvs$recipes)) {
+      shinyjs::show(DT::datatable(rvs$recipes, escape = FALSE))
+    }
     })
   output$no_of_pages = renderText({
     rvs$page_message

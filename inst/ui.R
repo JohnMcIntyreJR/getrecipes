@@ -49,7 +49,9 @@ shinyUI(fluidPage(
                  ),
     mainPanel(h2("Table providing the name, link and ingredients for each recipe"),
               h3(textOutput("no_of_pages")),
-              shinycssloaders::withSpinner(DT::dataTableOutput("table")))
-    )))
+              shinyjs::hidden(
+                shinycssloaders::withSpinner(DT::dataTableOutput("table"))
+                )
+    ))))
 
 #https://eu.jsonline.com/story/communities/southwest/news/greenfield/2017/09/19/gourmet-burger-restaurant-conceptual-layout-former-budget-cinemas-greenfield/681018001/
