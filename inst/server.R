@@ -69,16 +69,10 @@ shinyServer(function(input, output) {
     }
 
     #Creating a page count message
-    if(is.list(rvs$recipes)) {
-      rvs$page_message = "There are no pages that match your search criteria"
-    } else {
-      rvs$page_message = getrecipes::page_count(rvs$recipes, pages)
-    }
+    rvs$page_message = getrecipes::page_count(rvs$recipes, pages)
     })
   output$table = DT::renderDataTable({
-    if(is.list(rvs$recipes)) {
-      shinyjs::show(DT::datatable(rvs$recipes, escape = FALSE))
-    }
+      DT::datatable(rvs$recipes, escape = FALSE)
     })
   output$no_of_pages = renderText({
     rvs$page_message
