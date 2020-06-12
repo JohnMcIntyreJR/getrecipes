@@ -26,25 +26,28 @@ get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
   url = vector("character", pages)
   content = list()
 
-  #Check to see if the first webpage exists
-  url[1] = getrecipes::get_url(ingredients, type, 1, TRUE)
-  webpage_exists = RCurl::url.exists(url[1])
+  # #Check to see if the first webpage exists
+  # url[1] = getrecipes::get_url(ingredients, type, 1, TRUE)
+  # webpage_exists = RCurl::url.exists(url[1])
 
-  #if statement to check if first webpage exists then a conditional step
-  #if the user selects more than one page
-  if (webpage_exists) {
-      content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
-      if (pages > 1) {
-        content = getrecipes::join_pages(url, content, ingredients, type, pages, first_exist = TRUE)
-        }
-      } else {
-      url[1] = get_url(ingredients, type, 1, FALSE)
-      content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
-      if (pages > 1) {
-        content = getrecipes::join_pages(url, content, ingredients, type, pages,
-                                         first_exist = FALSE)
-      }
-      }
+  # #if statement to check if first webpage exists then a conditional step
+  # #if the user selects more than one page
+  # if (webpage_exists) {
+  #     content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
+  #     if (pages > 1) {
+  #       content = getrecipes::join_pages(url, content, ingredients, type, pages, first_exist = TRUE)
+  #       }
+  #     } else {
+  #     url[1] = get_url(ingredients, type, 1, FALSE)
+  #     content = as.list(getrecipes::get_response(api = api, url[1])[["results"]])
+  #     if (pages > 1) {
+  #       content = getrecipes::join_pages(url, content, ingredients, type, pages,
+  #                                        first_exist = FALSE)
+  #     }
+  #     }
+
+  content = getrecipes::join_pages(url, content, ingredients, type, pages)
+
   if (length(content) == 0) {
     recipes = content
   } else {

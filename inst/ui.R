@@ -21,9 +21,6 @@ page_emoji = emo::ji("page")
 shinyUI(fluidPage(
   bootstrap(),
   shinyjs::useShinyjs(),
-  #theme = "bootstrap.css",
-  #theme = shinythemes::shinytheme("superhero"),
-  #shinythemes::themeSelector(),
   titlePanel("Recipe finder"),
   sidebarLayout(
     sidebarPanel(h3("Answer the following questions to gain access to an abundance of
