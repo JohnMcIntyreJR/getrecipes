@@ -6,18 +6,18 @@
 #' but no space
 #' @param type A character string containing a type of food/drink
 #' @param pages Number of pages of search results
-#' @param first_exist Logical element indicating whether the webpage that should
-#' contain the first page exists
 #' @importFrom RCurl url.exists
 #' @export
-join_pages = function(url, content, ingredients, type, pages, first_exist) {
+join_pages = function(url, content, ingredients, type, pages) {
   pages_skipped = 0
-  for (i in 2:pages) {
-    url[i] = getrecipes::get_url(ingredients, type, i, first_exist)
+  for (i in 1:pages) {
+    url[i] = getrecipes::get_url(ingredients, type, i)
 
-    #Changing p=i to p=i+1 if response obtained already in case where p=i
-    if (url[i] == url[i-1]) {
-      url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped, first_exist)
+    if (i > 1) {
+      #Changing p=i to p=i+1 if response obtained already in case where p=i
+      if (url[i] == url[i-1]) {
+        url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped)
+      }
     }
 
     #If statement which checks to see if the corresponding web page exists then
@@ -26,14 +26,24 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
     if (webpage_exists) {
       contain_recipes = getrecipes::recipes_exist(url[i])
       if (contain_recipes) {
-        content = getrecipes::list_join(url[i], content)
+        if (i == 1) {
+          content = as.list(getrecipes::get_response(api = getrecipes::get_api(),
+                                           url[1])[["results"]])
+        } else {
+          content = getrecipes::list_join(url[i], content)
+        }
       } else {
         pages_skipped = pages_skipped + 1
-        url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped, first_exist)
+        url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped)
         if (webpage_exists) {
           contain_recipes = getrecipes::recipes_exist(url[i])
           if (contain_recipes) {
-            content = getrecipes::list_join(url[i], content)
+            if (i == 1) {
+              content = as.list(getrecipes::get_response(api = getrecipes::get_api(),
+                                                         url[1])[["results"]])
+            } else {
+              content = getrecipes::list_join(url[i], content)
+            }
           } else {
             #Breaking the loop if two consecutive pages return non-recipe data
             break
@@ -42,12 +52,17 @@ join_pages = function(url, content, ingredients, type, pages, first_exist) {
       }
     } else {
       pages_skipped = pages_skipped + 1
-      url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped, first_exist)
+      url[i] = getrecipes::get_url(ingredients, type, i + pages_skipped)
       webpage_exists = RCurl::url.exists(url[i])
       if (webpage_exists) {
         contain_recipes = getrecipes::recipes_exist(url[i])
         if (contain_recipes) {
-          content = getrecipes::list_join(url[i], content)
+          if (i == 1) {
+            content = as.list(getrecipes::get_response(api = getrecipes::get_api(),
+                                                       url[1])[["results"]])
+          } else {
+            content = getrecipes::list_join(url[i], content)
+          }
           } else {
             #Breaking the loop if two consecutive pages return non-recipe data
             break

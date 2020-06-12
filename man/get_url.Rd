@@ -4,7 +4,7 @@
 \alias{get_url}
 \title{Extracting the URL of a recipe bunny webpage}
 \usage{
-get_url(ingredients, type, page, first_exist)
+get_url(ingredients, type, page)
 }
 \arguments{
 \item{ingredients}{A string containing each chosen ingredient, separated by a comma}
@@ -12,9 +12,6 @@ get_url(ingredients, type, page, first_exist)
 \item{type}{The desired type of food}
 
 \item{page}{The chosen page of search results}
-
-\item{first_exist}{Logical element determining if the first page exists - i.e.
-if a server response is successful if p=1 is in the url}
 }
 \description{
 We are taking the user parameter entries and parsing them into the URL link

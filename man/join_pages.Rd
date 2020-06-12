@@ -4,7 +4,7 @@
 \alias{join_pages}
 \title{Joining lists relating to different pages of search results}
 \usage{
-join_pages(url, content, ingredients, type, pages, first_exist)
+join_pages(url, content, ingredients, type, pages)
 }
 \arguments{
 \item{url}{An initialized vector}
@@ -17,9 +17,6 @@ but no space}
 \item{type}{A character string containing a type of food/drink}
 
 \item{pages}{Number of pages of search results}
-
-\item{first_exist}{Logical element indicating whether the webpage that should
-contain the first page exists}
 }
 \description{
 Joining lists relating to different pages of search results
