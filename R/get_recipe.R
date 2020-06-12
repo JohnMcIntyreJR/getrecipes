@@ -45,11 +45,14 @@ get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
                                          first_exist = FALSE)
       }
       }
-
+  if (length(content) == 0) {
+    recipes = content
+  } else {
     #collating the list fields into columns in a dataset
     recipes = tibble::tibble(Name = stringr::str_squish(as.vector(content$title)),
                              Link = as.vector(content$href),
                              Ingredients = as.vector(stringr::str_split(content$ingredients, ", ")))
+
     #If statement based on whether the user wants recipes that contain all
     #ingredients or just some
     if (filter_all_ing == TRUE) {
@@ -60,5 +63,6 @@ get_recipe = function(type, wanted_ingredients, filter_all_ing = TRUE,
        recipes = recipes %>%
         getrecipes::manipulate_data(unwanted_ingredients)
      }
+  }
   recipes
   }
